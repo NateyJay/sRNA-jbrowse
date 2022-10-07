@@ -23,6 +23,13 @@ The following software must be runable from command line.
 
 ```ShortStack``` - available from https://github.com/MikeAxtell/ShortStack, with additional required packages.
 
+## What files as inputs?
+
+* Genome sequence file (.fa)
+* Genome annotation file (.gff3)
+* ShortStack sRNA annotation (.gff3)
+* Coverage files (.bigwig) - produced from ShortStack alignment
+
 
 ## General pipeline
 
@@ -70,6 +77,8 @@ All of these steps should hopefully function using the single python script:
 ## Producing BigWigs of coverage data
 
 We want to show small RNA coverage data along the genome browser. For this we will need to transform our alignment into coverage files (wiggle/wig format). 
+
+![bigwig](bigwig.png)
 
 These give a genomic coordinate and coverage depth, for each chromosome and position. Span of a region matching a depth is given in the track values "variableStep". In the following example. you can see the first and final parts of the chromosome are long spans with depth of 0 (there are no sRNA alignments for the start and end of these chromosomes).
 
