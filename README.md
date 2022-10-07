@@ -13,12 +13,12 @@ This repo is meant to be a set of directions to process sRNA-seq alignments, ann
 The following software must be runable from command line.
 
 
-'''python3'''
-'''gt''' (genometools, http://genometools.org/) - this can also be installed easily through package managers (brew install genometools for mac)
+```python3```
+```gt``` (genometools, http://genometools.org/) - this can also be installed easily through package managers (brew install genometools for mac)
 
-**bgzip** and **tabix** - both available through the htslib package http://www.htslib.org/download/
+```bgzip``` and ```tabix``` - both available through the htslib package http://www.htslib.org/download/
 
-**ShortStack** - available from https://github.com/MikeAxtell/ShortStack, with additional required packages.
+```ShortStack``` - available from https://github.com/MikeAxtell/ShortStack, with additional required packages.
 
 
 ### General pipeline
