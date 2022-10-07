@@ -51,10 +51,6 @@ Track configuration is shown below - this is challenging and quirky.
 
 
 
-
-
-
-
 ## Reformatting ShortStack gff
 
 The general output of all annotations from a ShortStack run is a gff3 file. Several modifications need to be performed to make it work for jbrowse. We first add a header giving ```sequence-region``` identifiers. We also remove gff description keys that start with a capital letter.
@@ -72,6 +68,8 @@ tabix -f -p gff ShortStack_All.clean.sorted.gff3.gz
 All of these steps should hopefully function using the single python script:
 
 ```python prepare_gff.py ShortStack_All.gff3```
+
+
 
 
 ## Producing BigWigs of coverage data
