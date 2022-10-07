@@ -236,8 +236,10 @@ urlTemplates+=json:{"url":"bigwig_A/long-.bigwig", "name": "long-", "color": "gr
 My included config files give some more examples of these, though not all are named identically.
 
 
+#### Was it worth it?
+Behold! the fruits of your labor
 
-
+![browser_shot](browser_shot.png)
 
 
 
