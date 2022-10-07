@@ -11,7 +11,7 @@ This repo is meant to be a set of directions to process sRNA-seq alignments, ann
 The aim of this pipeline is to emulate (nearly exactly) the format and style of data presented in [lunardon et al 2020](http://www.genome.org/cgi/doi/10.1101/gr.256750.119), found on the website: https://plantsmallrnagenes.science.psu.edu/.
 
 
-### Prerequisites
+## Prerequisites
 The following software must be runable from command line.
 
 
@@ -24,10 +24,10 @@ The following software must be runable from command line.
 ```ShortStack``` - available from https://github.com/MikeAxtell/ShortStack, with additional required packages.
 
 
-### General pipeline
+## General pipeline
 
 
-#### Configuring jbrowse
+### Configuring jbrowse
 
 Plotting multiple coverage plots is not natively supported by jbrowse. This functionality is available through a plugin [multibigwig]('https://github.com/elsiklab/multibigwig'), but this pug in is not available for jbrowse2 as of Oct 2022. 
 
@@ -48,7 +48,7 @@ Track configuration is shown below - this is challenging and quirky.
 
 
 
-#### Reformatting ShortStack gff
+### Reformatting ShortStack gff
 
 The general output of all annotations from a ShortStack run is a gff3 file. Several modifications need to be performed to make it work for jbrowse. We first add a header giving ```sequence-region``` identifiers. We also remove gff description keys that start with a capital letter.
 
@@ -67,7 +67,7 @@ All of these steps should hopefully function using the single python script:
 ```python prepare_gff.py ShortStack_All.gff3```
 
 
-#### Producing BigWigs of coverage data
+### Producing BigWigs of coverage data
 
 We want to show small RNA coverage data along the genome browser. For this we will need to transform our alignment into coverage files (wiggle/wig format). 
 
@@ -148,7 +148,7 @@ Importantly, use ```-o``` to give the directory. These will be important to keep
 ***Note:*** This is not an easy task... It will take time and computing power, as any process will that processes a bam file.
 
 
-#### Jbrowse track configuration
+### Jbrowse track configuration
 
 This is one of the more challenging aspects of this process. The format for tracks is not totally clear.
 
@@ -163,7 +163,7 @@ I have attached the config files for a sample of my own data (not provided, too 
 
 ```tracks.conf``` communicates all of the plotting details. Note all of the file locations are specified by the url dimensions.
 
-*The indexed genome file input* (and another plugin??)
+***The indexed genome file input*** (and another plugin??)
 ```
 [GENERAL]
 
@@ -178,10 +178,9 @@ storeClass=JBrowse/Store/SeqFeature/IndexedFasta
 type=Sequence
 showTranslation=false
 showColor=false
-
 ```
 
-*The gene annotations for the aligned genome above.* Note, these have gone through the same GFF3 pipeline.
+***The gene annotations for the aligned genome above.*** Note, these have gone through the same GFF3 pipeline.
 ```
 [tracks.Bocin_ann]
 urlTemplate=Bocin.genes.sorted.gff3.gz
@@ -189,16 +188,15 @@ storeClass=JBrowse/Store/SeqFeature/GFF3Tabix
 type=CanvasFeatures
 ```
 
-*Our formatted annotation of sRNAs from ShortStack*
+***Our formatted annotation of sRNAs from ShortStack***
 ```
-
 [tracks.ShortStack_ann]
 urlTemplate=ShortStack_All.clean.sorted.gff3.gz
 storeClass=JBrowse/Store/SeqFeature/GFF3Tabix
 type=CanvasFeatures
 ```
 
-*An example of a multibigwig track.* Key gives the name for a track where multiple bigwigs will be plotted. These are added with urlTemplates, where we give the file location, name, and color for each line. These colors are identical to the reference paper.
+***An example of a multibigwig track.*** Key gives the name for a track where multiple bigwigs will be plotted. These are added with urlTemplates, where we give the file location, name, and color for each line. These colors are identical to the reference paper.
 ```
 [tracks.A ]
 key=A (Tratr)
@@ -236,7 +234,7 @@ urlTemplates+=json:{"url":"bigwig_A/long-.bigwig", "name": "long-", "color": "gr
 My included config files give some more examples of these, though not all are named identically.
 
 
-#### Was it worth it?
+### Was it worth it?
 Behold! the fruits of your labor
 
 ![browser_shot](browser_shot.png)
