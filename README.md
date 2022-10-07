@@ -27,7 +27,7 @@ The following software must be runable from command line.
 ## General pipeline
 
 
-### Configuring jbrowse
+## Configuring jbrowse
 
 Plotting multiple coverage plots is not natively supported by jbrowse. This functionality is available through a plugin [multibigwig]('https://github.com/elsiklab/multibigwig'), but this pug in is not available for jbrowse2 as of Oct 2022. 
 
@@ -48,7 +48,7 @@ Track configuration is shown below - this is challenging and quirky.
 
 
 
-### Reformatting ShortStack gff
+## Reformatting ShortStack gff
 
 The general output of all annotations from a ShortStack run is a gff3 file. Several modifications need to be performed to make it work for jbrowse. We first add a header giving ```sequence-region``` identifiers. We also remove gff description keys that start with a capital letter.
 
@@ -67,7 +67,7 @@ All of these steps should hopefully function using the single python script:
 ```python prepare_gff.py ShortStack_All.gff3```
 
 
-### Producing BigWigs of coverage data
+## Producing BigWigs of coverage data
 
 We want to show small RNA coverage data along the genome browser. For this we will need to transform our alignment into coverage files (wiggle/wig format). 
 
@@ -148,7 +148,7 @@ Importantly, use ```-o``` to give the directory. These will be important to keep
 ***Note:*** This is not an easy task... It will take time and computing power, as any process will that processes a bam file.
 
 
-### Jbrowse track configuration
+## Jbrowse track configuration
 
 This is one of the more challenging aspects of this process. The format for tracks is not totally clear.
 
@@ -234,7 +234,7 @@ urlTemplates+=json:{"url":"bigwig_A/long-.bigwig", "name": "long-", "color": "gr
 My included config files give some more examples of these, though not all are named identically.
 
 
-### Was it worth it?
+## Was it worth it?
 Behold! the fruits of your labor
 
 ![browser_shot](browser_shot.png)
