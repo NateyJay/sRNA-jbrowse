@@ -93,7 +93,6 @@ assert not isdir(out_dir), "Output dir exists! (will not overwrite)"
 
 
 
-
 def get_chromosomes(file):
 	chromosomes = []
 	rgs = []
@@ -152,6 +151,53 @@ with open("chrom.sizes.txt", 'w') as outf:
 		print(chrom, size, sep='\t', file=outf)
 
 
+
+
+def get_conf():
+
+	col_dict = {
+	19 : 'magenta',
+	20 : 'skyblue',
+	21 : 'blue',
+	22 : 'mediumseagreen',
+	23 : 'orange',
+	24 : 'tomato'
+	}
+
+	conf = f'''
+[tracks.{out_dir} ]
+key={out_dir}
+type=MultiBigWig/View/Track/MultiWiggle/MultiXYPlot
+storeClass=MultiBigWig/Store/SeqFeature/MultiBigWig
+maxExportSpan=500000
+autoscale=local
+logScaleOption=true
+style+=json:{{
+    "pos_color": "blue",
+    "neg_color": "red",
+    "origin_color": "#888",
+    "variance_band_color": "rgba(0,0,0,0.3)",
+    "bg_color": "grey"
+  }}
+showTooltips=true
+'''
+
+	for size in sizes + ['short', 'long']:
+		print(size)
+		try:
+			col = col_dict[size]
+		except KeyError:
+			col = 'grey'
+
+		for strand in ["+","-"]:
+
+			conf += f'''urlTemplates+=json:{{"url":"bigwig_A/{size}{strand}.bigwig", "name": "{size}{strand}", "color": {col}"}}\n'''
+
+	return(conf)
+
+
+with open(out_dir.rstrip('/') + "/track.conf", 'w') as f:
+	f.write(get_conf())
 
 
 

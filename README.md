@@ -152,6 +152,8 @@ I could also specify size ranges using -s. ```-s 19 23``` for example to indicat
 
 Importantly, use ```-o``` to give the directory. These will be important to keep clear between readgroups as jbrowse will need to locate your bigwigs.
 
+This script ***makes one more file*** a pre-filled configuration script. This can be copy+pasted into the track conf to add this multibigwig.
+
 ***Note:*** This is not an easy task... It will take time and computing power, as any process will that processes a bam file.
 
 
