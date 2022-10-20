@@ -244,6 +244,12 @@ My included config files give some more examples of these, though not all are na
 
 
 ## Was it worth it?
+
+Your jbrowse server can be started with the following command run in the jbrowse directory:
+```
+npm run start
+```
+
 Behold! the fruits of your labor
 
 ![browser_shot](browser_shot.png)
